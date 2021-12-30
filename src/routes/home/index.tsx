@@ -1,13 +1,23 @@
 import { useState } from 'react'
-import {  Link} from 'react-router-dom';
+import {  Link, withRouter} from 'react-router-dom';
 import logo from '@/assets/logo.svg'
+import { DatePicker,Button } from 'antd-mobile';
 import './index.less'
 
 function Index() {
   const [count, setCount] = useState(0)
+  const [date, setDate] = useState();
 
   return (
     <div className="Index">
+    <Button>111</Button>
+        <DatePicker
+          value={date}
+          onChange={date => {console.log(date);setDate(date)}}
+        >
+          222
+        </DatePicker>
+    <DatePicker />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>
@@ -46,4 +56,4 @@ function Index() {
   )
 }
 
-export default Index
+export default withRouter(Index)

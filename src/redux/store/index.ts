@@ -1,21 +1,26 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import {routerMiddleware} from '@/routes/history';
-import rootReducer from '../reducers'
+import { createStore, applyMiddleware, Store, Middleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension/logOnlyInProduction";
+import { routerMiddleware } from 'connected-react-router';
+import history from "@/routes/history";
+import createRootReducer from "../reducers";
 
-const middlewares:Array<any> = [];
+let store: Store;
+const middlewares: Middleware[] = [];
 
-export default function configureStore(initialState?:any ) {
+const configureStore = (initialState?: any): Store => {
+  if (store) {
+    return store;
+  }
 
-
-  const store = createStore(
-    rootReducer,
-
-    // composeWithDevTools(
-    //   applyMiddleware(routerMiddleware)
-    // ),
+  middlewares.push(routerMiddleware(history));
+  const composeEnhancers = composeWithDevTools({
+    // options like actionSanitizer, stateSanitizer
+  });
+  
+  store = createStore(
+    createRootReducer(history),
     initialState,
-    // composeEnhancers(applyMiddleware(...middlewares))
+    composeEnhancers(applyMiddleware(...middlewares))
   );
 
   // if (module.hot) {
@@ -26,4 +31,6 @@ export default function configureStore(initialState?:any ) {
   //   });
   // }
   return store;
-}
+};
+
+export default configureStore;

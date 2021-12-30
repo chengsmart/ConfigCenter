@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { withRouter } from 'react-router-dom'
 import './index.css'
 
 function Detail() {
@@ -11,4 +12,4 @@ function Detail() {
   )
 }
 
-export default Detail
+export default withRouter(Detail)
