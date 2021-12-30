@@ -20,8 +20,9 @@
       "@/*": ["./src/*"],
       "@router/*": ["./src/router/*"],
       "@components/*": ["./src/components/*"],
-      "@pages/*": ["src/routes/*"],
+      "@pages/*": ["./src/routes/*"],
     }
   },
   "include": ["./src"],
+  "exclude": ["node_modules", "lib"]
 }
