@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { renderRoutes } from 'react-router-config';
+import LoginForm from './components/loginForm';
+import Logo from './components/logo';
 import './index.less';
 
 const Login = props => {
@@ -9,7 +11,8 @@ const Login = props => {
 
   return (
     <div className="detail">
-      <h1>login</h1>
+      <Logo />
+      <LoginForm />
       {route && renderRoutes(route.routes)}
     </div>
   );
