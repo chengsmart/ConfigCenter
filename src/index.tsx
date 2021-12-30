@@ -8,13 +8,15 @@ import history from '@/routes/history';
 import routes from './routes/index';
 import renderRoutes from './components/render-routes';
 import 'amfe-flexible/index.js';
-import '@/style/index.less';
+import './style/index.less';
 
 const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>{renderRoutes(routes)}</ConnectedRouter>
+    <ConnectedRouter history={history}>
+      <div className="main-container">{renderRoutes(routes)}</div>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
 );
