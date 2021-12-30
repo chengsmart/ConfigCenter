@@ -2,7 +2,7 @@
   "name": "vite-react",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode dev",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
