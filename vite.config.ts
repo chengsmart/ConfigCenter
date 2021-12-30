@@ -12,12 +12,20 @@ export default defineConfig({
         {
           libraryName: "antd-mobile",
           libraryDirectory: "es",
-          style: true, // or 'css'
+          style: 'css', // or 'css'
         },
       ],
     }),
   ],
-
+  css: {
+    // css预处理器
+    preprocessorOptions: {
+      less: {
+        charset: false,
+        // additionalData: '@import "./src/assets/style/global.less";',
+      },
+    },
+  },
   resolve: {
     alias: [
       { find: "@", replacement: path.resolve(__dirname, "src") },
