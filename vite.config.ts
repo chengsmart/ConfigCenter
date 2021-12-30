@@ -22,6 +22,7 @@ export default defineConfig({
     preprocessorOptions: {
       less: {
         charset: false,
+        javascriptEnabled: true,
         // additionalData: '@import "./src/assets/style/global.less";',
       },
     },

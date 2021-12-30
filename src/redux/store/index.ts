@@ -1,8 +1,8 @@
-import { createStore, applyMiddleware, Store, Middleware } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension/logOnlyInProduction";
+import { createStore, applyMiddleware, Store, Middleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
 import { routerMiddleware } from 'connected-react-router';
-import history from "@/routes/history";
-import createRootReducer from "../reducers";
+import history from '@/routes/history';
+import createRootReducer from '../reducers';
 
 let store: Store;
 const middlewares: Middleware[] = [];
@@ -16,12 +16,8 @@ const configureStore = (initialState?: any): Store => {
   const composeEnhancers = composeWithDevTools({
     // options like actionSanitizer, stateSanitizer
   });
-  
-  store = createStore(
-    createRootReducer(history),
-    initialState,
-    composeEnhancers(applyMiddleware(...middlewares))
-  );
+
+  store = createStore(createRootReducer(history), initialState, composeEnhancers(applyMiddleware(...middlewares)));
 
   // if (module.hot) {
   //   // Enable Webpack hot module replacement for reducers

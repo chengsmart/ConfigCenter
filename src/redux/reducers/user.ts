@@ -1,10 +1,10 @@
 import ActionTypes from '../constants';
 
 const initialState = {
-  userInfo: undefined,
+  userInfo: undefined
 };
 
-const user = (state = initialState, action:any) => {
+const user = (state = initialState, action: any) => {
   switch (action.type) {
     case ActionTypes.SET_USER_INFO:
       return Object.assign({}, state, {
