@@ -4,14 +4,22 @@ import { Modal, Toast } from 'antd-mobile';
 import { AiOutlineLogout, AiOutlinePlus } from 'react-icons/ai';
 import './index.less';
 
-const prompt = Modal.prompt;
+const { alert, prompt } = Modal;
 type IProps = {
   env: string;
 };
 const InsertField = ({ env }: IProps) => {
   const logout = () => {
-    removeStorage('token');
-    history.replace('/login');
+    alert('退出登录', '', [
+      { text: '再看看', onPress: () => {} },
+      {
+        text: '退出',
+        onPress: () => {
+          removeStorage('token');
+          history.replace('/login');
+        }
+      }
+    ]);
   };
   const openModal = () => {
     prompt(
