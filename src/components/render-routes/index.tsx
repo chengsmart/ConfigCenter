@@ -1,12 +1,11 @@
 import { getStorage } from '@/utils/storage';
-import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
-const renderRoutes = (routes, extraProps = {}, switchProps = {}) => {
+const renderRoutes = (routes: any, extraProps = {}, switchProps = {}) => {
   const token = getStorage('token');
   const whiteList = ['/login'];
   return routes ? (
     <Switch {...switchProps}>
-      {routes.map((route, i) => (
+      {routes.map((route: any, i: number) => (
         <Route
           key={route.key || i}
           path={route.path}

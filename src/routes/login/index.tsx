@@ -4,7 +4,7 @@ import LoginForm from './components/loginForm';
 import Logo from './components/logo';
 import './index.less';
 
-const Login = props => {
+const Login = (props: any) => {
   const { route } = props;
   console.log(import.meta.env.VITE_API_URL);
   console.log(import.meta);

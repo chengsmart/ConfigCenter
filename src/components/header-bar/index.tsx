@@ -10,7 +10,7 @@ type IProps = {
   needPopView?: boolean; // 是否退出webview
 };
 
-const Other = ({ render }) => render();
+const Other = ({ render }: any) => render();
 
 const HeaderBar = ({ showBackBtn = true, children, titleText, renderOther, ...otherProps }: IProps) => {
   return (

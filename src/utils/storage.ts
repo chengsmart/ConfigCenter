@@ -21,7 +21,7 @@ export const setStorage = (key: string, value: string): void => {
  */
 export const getStorage = (key: string): string => {
   if (window.localStorage) {
-    let value = localStorage.getItem(key);
+    let value: any = localStorage.getItem(key);
     if (value && typeof value === 'string' && value === 'undefined') {
       value = undefined;
     }

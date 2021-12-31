@@ -1,7 +1,7 @@
 import { renderRoutes } from 'react-router-config';
 import './index.less';
 
-const ErrorPage = props => {
+const ErrorPage = (props: any) => {
   const { route } = props;
   return (
     <div className="error-page">
