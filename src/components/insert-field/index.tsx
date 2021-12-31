@@ -1,5 +1,7 @@
+import history from '@/routes/history';
+import { removeStorage } from '@/utils/storage';
 import { Modal, Toast } from 'antd-mobile';
-import { AiOutlinePlus } from 'react-icons/ai';
+import { AiOutlineLogout, AiOutlinePlus } from 'react-icons/ai';
 import './index.less';
 
 const prompt = Modal.prompt;
@@ -7,6 +9,10 @@ type IProps = {
   env: string;
 };
 const InsertField = ({ env }: IProps) => {
+  const logout = () => {
+    removeStorage('token');
+    history.replace('/login');
+  };
   const openModal = () => {
     prompt(
       '新增字段',
@@ -36,7 +42,8 @@ const InsertField = ({ env }: IProps) => {
   };
   return (
     <div className="insert-field">
-      <AiOutlinePlus className="btn-add" onClick={openModal} />
+      <AiOutlineLogout className="header-btn btn-logout" onClick={logout} />
+      <AiOutlinePlus className="header-btn btn-add" onClick={openModal} />
     </div>
   );
 };
