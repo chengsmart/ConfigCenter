@@ -1,6 +1,8 @@
 import { List, SwipeAction, Switch } from 'antd-mobile';
-import '../index.less';
+import { useState } from 'react';
+import './index.less';
 const ConfigList = () => {
+  const [isOpen, setOpen] = useState(false);
   return (
     <div className="config-list">
       <List>
@@ -14,7 +16,18 @@ const ConfigList = () => {
           ]}
           autoClose
         >
-          <List.Item extra={<Switch />}>key</List.Item>
+          <List.Item
+            extra={
+              <Switch
+                checked={isOpen}
+                onChange={e => {
+                  setOpen(e);
+                }}
+              />
+            }
+          >
+            key
+          </List.Item>
         </SwipeAction>
       </List>
     </div>
