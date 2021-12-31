@@ -1,6 +1,6 @@
 # ConfigCenter
 
-> 自我学习的一个小项目，使用vite搭建，已配置多环境、px2rem、eslint、mockjs等
+> 基于vite构建的react项目，已配置多环境、px2rem、eslint、mockjs等
 
 ## TODO
 
