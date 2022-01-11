@@ -1,11 +1,9 @@
 import { getData, postData } from '@/utils/request';
 import { Ipaging } from './interface';
 
-const apiVersion = import.meta.env.VITE_API_VERSION;
-
 const URL = {
-  login: `/mapi/auth/${apiVersion}/login`,
-  getConfigList: `/mapi/auth/${apiVersion}/getConfigList`
+  login: `/api/auth`,
+  register: `/api/auth/register`
 };
 
 interface Ilogin {
@@ -14,7 +12,7 @@ interface Ilogin {
 }
 
 export const userLoginApi = (data: Ilogin): Promise<any> => {
-  return postData({
+  return getData({
     url: URL.login,
     data
   });
@@ -25,8 +23,8 @@ interface IgetConfigList extends Ipaging {
 }
 
 export const getConfigListApi = (data: IgetConfigList): Promise<any> => {
-  return getData({
-    url: URL.getConfigList,
+  return postData({
+    url: URL.register,
     data
   });
 };

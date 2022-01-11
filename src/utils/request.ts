@@ -44,15 +44,15 @@ const makeRequest = <T>(method: string, url: string, queryParams?: object, body?
   return new Promise((resolve, reject) => {
     request
       .then((response: any) => {
-        const result: any = response.data;
-        if (result.code === '0') {
+        const result: any = response.data.data;
+        if (result.resCode === '0') {
           // 此处处理不同状态逻辑 例如 ajax 的登录拦截
-          resolve(response.data);
-        } else if (result.code === 400001) {
+          resolve(response.data.data);
+        } else if (result.resCode === 400001) {
           window.location.href = '/login.html';
           // window.location.href = `/m/login?redirectURL=${encodeURIComponent(window.location.href)}`;
         } else {
-          reject(response.data);
+          reject(response.data.data);
         }
       })
       .catch((err: Error) => {
@@ -88,16 +88,16 @@ export const getData = async (config: any): Promise<any> => {
   return new Promise((resolve, reject) => {
     request
       .then(response => {
-        const result: any = response.data;
+        const result: any = response.data.data;
         // TODO 整理接口返回格式
-        if (Number(result.status) === 0) {
+        if (Number(result.resCode) === 0) {
           // 此处处理不同状态逻辑 例如 ajax 的登录拦截
-          resolve(response.data);
-        } else if (Number(result.status) === -1 && Number(result.code) === 1001) {
+          resolve(response.data.data);
+        } else if (Number(result.resCode) === 400001) {
           // TODO 未登录处理
           // login();
         } else {
-          reject(response.data);
+          reject(response.data.data);
         }
       })
       .catch((err: Error) => {
@@ -138,15 +138,15 @@ export const postData = async (config: any): Promise<{ re: any }> => {
   return new Promise((resolve, reject) => {
     request
       .then(response => {
-        const result: any = response.data;
-        if (Number(result.status) === 0) {
+        const result: any = response.data.data;
+        if (Number(result.resCode) === 0) {
           // TODO 整理接口返回格式
-          resolve(response.data);
-        } else if (Number(result.status) === -1 && Number(result.code) === 1001) {
+          resolve(response.data.data);
+        } else if (Number(result.resCode) === 400001) {
           // TODO 未登录处理
           // login();
         } else {
-          reject(response.data);
+          reject(response.data.data);
         }
       })
       .catch((err: Error) => {
