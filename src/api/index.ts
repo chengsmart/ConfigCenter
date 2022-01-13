@@ -3,7 +3,8 @@ import { Ipaging } from './interface';
 
 const URL = {
   login: `/api/auth`,
-  register: `/api/auth/register`
+  register: `/api/auth/register`,
+  config: `/api/config/list`
 };
 
 interface Ilogin {
@@ -23,8 +24,8 @@ interface IgetConfigList extends Ipaging {
 }
 
 export const getConfigListApi = (data: IgetConfigList): Promise<any> => {
-  return postData({
-    url: URL.register,
+  return getData({
+    url: URL.config,
     data
   });
 };

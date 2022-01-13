@@ -6,23 +6,18 @@ import { userLoginApi } from '@/api';
 import './index.less';
 
 const LoginForm = () => {
-  const loginServer = async () => {
+  const login = async () => {
     try {
-      const res = await userLoginApi({
+      const { resData } = await userLoginApi({
         userName: 'chengshuai',
         passwd: '111111'
       });
-      console.log(res);
+      console.log(resData);
+      setStorage('token', resData.token);
+      history.push('/dashboard');
     } catch (error) {
       console.warn(error);
     }
-  };
-  const login = () => {
-    loginServer();
-    return;
-    // TODO 调整为存储redux
-    setStorage('token', 'FAKE_TOKEN');
-    history.push('/dashboard');
   };
   const logout = () => {
     removeStorage('token');

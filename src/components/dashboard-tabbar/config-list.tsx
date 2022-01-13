@@ -1,8 +1,25 @@
+import { getConfigListApi } from '@/api';
 import { List, SwipeAction, Switch } from 'antd-mobile';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './index.less';
+
 const ConfigList = () => {
   const [isOpen, setOpen] = useState(false);
+  const configList = async () => {
+    try {
+      const { resData } = await getConfigListApi({
+        source: 'IOS',
+        pageIndex: 1,
+        pageSize: 10
+      });
+      console.log(resData);
+    } catch (error) {
+      console.warn(error);
+    }
+  };
+  useEffect(() => {
+    configList();
+  }, []);
   return (
     <div className="config-list">
       <List>

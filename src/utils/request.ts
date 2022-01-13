@@ -1,7 +1,7 @@
 import axios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import qs from 'qs';
 import { Toast } from 'antd-mobile';
-import { getSession } from './storage';
+import { getSession, getStorage } from './storage';
 
 const baseURL = import.meta.env.VITE_API_URL;
 const httpClient: AxiosInstance = axios.create({
@@ -73,11 +73,11 @@ export const getData = async (config: any): Promise<any> => {
   }) */
   // eslint-disable-next-line no-param-reassign
   config.data = qs.stringify(data);
-  const token = getSession('token');
+  const token = getStorage('token');
   const newConfig: AxiosRequestConfig = {
     method: 'get', // default
     baseURL,
-    headers: { token },
+    headers: token ? { token } : '',
     responseType: 'json',
     responseEncoding: 'utf8',
     timeout: 50000,
@@ -122,11 +122,11 @@ export const postData = async (config: any): Promise<{ re: any }> => {
   // eslint-disable-next-line no-param-reassign
   config.data = qs.stringify(data);
 
-  const token = getSession('token');
+  const token = getStorage('token');
   const newConfig: AxiosRequestConfig = {
     method: 'post', // default
     baseURL,
-    headers: { token },
+    headers: token ? { token } : '',
     responseType: 'json',
     responseEncoding: 'utf8',
     timeout: 50000,
