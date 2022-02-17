@@ -17,7 +17,7 @@ const routes: RouteConfig = [
   {
     path: '/dashboard',
     component: Dashboard,
-    requiresAuth: false
+    requiresAuth: true
   },
   {
     path: '/home',
