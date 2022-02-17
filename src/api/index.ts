@@ -8,12 +8,12 @@ const URL = {
 };
 
 interface Ilogin {
-  userName: string;
+  name: string;
   passwd: string;
 }
 
 export const userLoginApi = (data: Ilogin): Promise<any> => {
-  return getData({
+  return postData({
     url: URL.login,
     data
   });

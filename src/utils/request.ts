@@ -89,6 +89,8 @@ export const getData = async (config: any): Promise<any> => {
     request
       .then(response => {
         const result: any = response.data.data;
+        console.log('result', result, response.data);
+
         // TODO 整理接口返回格式
         if (Number(result.resCode) === 0) {
           // 此处处理不同状态逻辑 例如 ajax 的登录拦截
@@ -120,7 +122,7 @@ export const postData = async (config: any): Promise<{ re: any }> => {
     data: JSON.stringify(data),
   }) */
   // eslint-disable-next-line no-param-reassign
-  config.data = qs.stringify(data);
+  // config.data = qs.stringify(data);
 
   const token = getStorage('token');
   const newConfig: AxiosRequestConfig = {
