@@ -1,3 +1,4 @@
+import { createConfigApi } from '@/api';
 import history from '@/routes/history';
 import { removeStorage } from '@/utils/storage';
 import { Modal, Toast } from 'antd-mobile';
@@ -21,6 +22,16 @@ const InsertField = ({ env }: IProps) => {
       }
     ]);
   };
+  const createKey = async (key: string) => {
+    try {
+      const res = await createConfigApi({ key, source: env.toLocaleLowerCase() });
+      console.log(res);
+
+      Toast.info('添加成功', 1);
+    } catch (error: any) {
+      Toast.info(`添加失败:${error.msg}`, 1);
+    }
+  };
   const openModal = () => {
     prompt(
       '新增字段',
@@ -32,15 +43,7 @@ const InsertField = ({ env }: IProps) => {
         },
         {
           text: '添加',
-          onPress: value =>
-            new Promise((resolve, reject) => {
-              // TODO api调用
-              Toast.info('添加成功', 1);
-              setTimeout(() => {
-                resolve(1);
-                console.log(`value:${value}`);
-              }, 1000);
-            })
+          onPress: value => createKey(value)
         }
       ],
       'default',

@@ -4,7 +4,8 @@ import { Ipaging } from './interface';
 const URL = {
   login: `/api/auth`,
   register: `/api/auth/register`,
-  config: `/api/config/list`
+  config: `/api/config`,
+  configList: `/api/config/list`
 };
 
 interface Ilogin {
@@ -25,7 +26,18 @@ interface IgetConfigList extends Ipaging {
 
 export const getConfigListApi = (data: IgetConfigList): Promise<any> => {
   return getData({
-    url: URL.config + `?source=${data.source}`,
+    url: URL.configList + `?source=${data.source}`,
+    data
+  });
+};
+
+interface IcreateConfigApi {
+  source: 'ios' | 'android' | 'miniapp';
+  key: string;
+}
+export const createConfigApi = (data: IcreateConfigApi): Promise<any> => {
+  return postData({
+    url: URL.config,
     data
   });
 };
