@@ -34,6 +34,7 @@ export const getConfigListApi = (data: IgetConfigList): Promise<any> => {
 interface IcreateConfigApi {
   source: 'ios' | 'android' | 'miniapp';
   key: string;
+  state: 0 | 1;
 }
 export const createConfigApi = (data: IcreateConfigApi): Promise<any> => {
   return postData({

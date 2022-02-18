@@ -3,6 +3,7 @@ import ConfigList from '@/components/dashboard-tabbar/config-list';
 import { TabBar } from 'antd-mobile';
 import { useEffect, useState } from 'react';
 import { AiFillAndroid, AiFillApple, AiFillWechat } from 'react-icons/ai';
+import EmptyPage from '../empty-page';
 import './index.less';
 
 type IProps = {
@@ -37,7 +38,7 @@ const DashboardTabbar = ({ tab, setTab }: IProps) => {
           selected={tab === 'IOS'}
           onPress={() => setTab('IOS')}
         >
-          {!!dataList.length ? <ConfigList list={dataList} key="IOS" /> : null}
+          {!!dataList.length ? <ConfigList list={dataList} key="IOS" /> : <EmptyPage />}
         </TabBar.Item>
         <TabBar.Item
           title="Android"
@@ -47,7 +48,7 @@ const DashboardTabbar = ({ tab, setTab }: IProps) => {
           selected={tab === 'Android'}
           onPress={() => setTab('Android')}
         >
-          {!!dataList.length ? <ConfigList list={dataList} key="Android" /> : null}
+          {!!dataList.length ? <ConfigList list={dataList} key="Android" /> : <EmptyPage />}
         </TabBar.Item>
         <TabBar.Item
           title="MiniApp"
@@ -57,7 +58,7 @@ const DashboardTabbar = ({ tab, setTab }: IProps) => {
           selected={tab === 'MiniApp'}
           onPress={() => setTab('MiniApp')}
         >
-          {!!dataList.length ? <ConfigList list={dataList} key="MiniApp" /> : null}
+          {!!dataList.length ? <ConfigList list={dataList} key="MiniApp" /> : <EmptyPage />}
         </TabBar.Item>
       </TabBar>
     </div>

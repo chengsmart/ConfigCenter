@@ -23,7 +23,7 @@ const ConfigList = (props: { list: any }) => {
             <List.Item
               extra={
                 <Switch
-                  checked={!item.state}
+                  checked={item.state == '1'}
                   onChange={e => {
                     changeState(e);
                   }}

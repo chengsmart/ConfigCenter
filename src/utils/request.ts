@@ -89,7 +89,6 @@ export const getData = async (config: any): Promise<any> => {
     request
       .then(response => {
         const result: any = response.data.data;
-        console.log('result', result, response.data);
 
         // TODO 整理接口返回格式
         if (Number(result.resCode) === 0) {

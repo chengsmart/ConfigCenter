@@ -1,5 +1,5 @@
 import { RouteConfig } from 'react-router-config';
-import Home from '@/routes/home/index';
+import Create from '@/routes/create/index';
 import Dashboard from '@/routes/dashboard/index';
 import Login from '@/routes/login/index';
 import ErrorPage from '@/routes/error-page/index';
@@ -8,7 +8,7 @@ const routes: RouteConfig = [
   {
     path: '/',
     exact: true,
-    component: Home
+    component: Dashboard
   },
   {
     path: '/login',
@@ -20,8 +20,8 @@ const routes: RouteConfig = [
     requiresAuth: true
   },
   {
-    path: '/home',
-    component: Home,
+    path: '/create',
+    component: Create,
     requiresAuth: true
   },
   {
