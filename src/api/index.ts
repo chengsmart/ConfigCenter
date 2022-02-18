@@ -20,12 +20,12 @@ export const userLoginApi = (data: Ilogin): Promise<any> => {
 };
 
 interface IgetConfigList extends Ipaging {
-  source: string;
+  source: 'ios' | 'android' | 'miniapp';
 }
 
 export const getConfigListApi = (data: IgetConfigList): Promise<any> => {
   return getData({
-    url: URL.config,
+    url: URL.config + `?source=${data.source}`,
     data
   });
 };

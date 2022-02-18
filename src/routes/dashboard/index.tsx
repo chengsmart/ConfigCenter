@@ -5,7 +5,6 @@ import { useState } from 'react';
 import './index.less';
 
 const Dashboard = () => {
-  const [tabBarHide, setTabBarHide] = useState(false);
   const [activeTab, setActiveTab] = useState('IOS');
   return (
     <div className="dashboard">

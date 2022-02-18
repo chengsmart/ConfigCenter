@@ -3,49 +3,37 @@ import { List, SwipeAction, Switch } from 'antd-mobile';
 import { useEffect, useState } from 'react';
 import './index.less';
 
-const ConfigList = () => {
-  const [isOpen, setOpen] = useState(false);
-  const configList = async () => {
-    try {
-      const { resData } = await getConfigListApi({
-        source: 'IOS',
-        pageIndex: 1,
-        pageSize: 10
-      });
-      console.log(resData);
-    } catch (error) {
-      console.warn(error);
-    }
-  };
-  useEffect(() => {
-    configList();
-  }, []);
+const ConfigList = (props: { list: any }) => {
+  const changeState = e => {};
   return (
     <div className="config-list">
       <List>
-        <SwipeAction
-          right={[
-            {
-              text: '删除',
-              onPress: () => console.log('delete'),
-              className: 'btn-delete'
-            }
-          ]}
-          autoClose
-        >
-          <List.Item
-            extra={
-              <Switch
-                checked={isOpen}
-                onChange={e => {
-                  setOpen(e);
-                }}
-              />
-            }
+        {props.list.map((item, i) => (
+          <SwipeAction
+            key={i}
+            right={[
+              {
+                text: '删除',
+                onPress: () => console.log('delete'),
+                className: 'btn-delete'
+              }
+            ]}
+            autoClose
           >
-            key
-          </List.Item>
-        </SwipeAction>
+            <List.Item
+              extra={
+                <Switch
+                  checked={!item.state}
+                  onChange={e => {
+                    changeState(e);
+                  }}
+                />
+              }
+            >
+              {item.key_name}
+            </List.Item>
+          </SwipeAction>
+        ))}
       </List>
     </div>
   );
